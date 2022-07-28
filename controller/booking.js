@@ -43,7 +43,8 @@ async function booking(req,res){
         const time = req.body.time
         const physician = req.body.physician
         // const idProof = req.body.idProof
-        const idProof = req.file.path.replace(('\\', '_'))
+        const idProof = req.file.path
+        path = path.replace("/", "//")
         bookingModel.booking(name,date,time,physician,idProof)
         
  
