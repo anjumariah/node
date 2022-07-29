@@ -4,14 +4,19 @@ console.log(userModel,"---------USER In controller---------");
 
 
 async function userPanel(req,res){
-    
+    console.log("controller");
     try{
         const {id} = req.query;        
        const userResponse=await userModel.userPanel(id);
         console.log(userResponse,"iiiiiiiiiiiiiiiiiiiiiiiiiiiisssssdddddddddd");
-        return res.json({ success: true, message: 'user id ',userResponse:userResponse})
+        if(userResponse ==false){
+            return res.json({ success:false , message: 'error'})
+        }
+        return res.json({ success: true , message: 'user id ',userResponse:userResponse})
     }catch{
-        res.status(403).send({success:false,error:"no iser"})
+
+        res.send({success:false,error:"no iser"})
+
 
     }
 }
@@ -19,6 +24,14 @@ async function userPanel(req,res){
 module.exports = {
     userPanel
 }
+
+
+
+
+
+
+
+
 
 
 

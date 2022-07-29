@@ -26,14 +26,19 @@ app.use('/auth', signuprouter)
 const contentRouter = require('./routes/content')
 app.use('/content', contentRouter)
 
-
 const cardRouter = require('./routes/card')
 app.use('/card',cardRouter)
+
+app.use(express.static("uploads/booking"));
 
 const bookRouter = require('./routes/booking')
 app.use('/book',bookRouter)
 
+const adminRouter = require('./routes/admin')
+app.use('/admin',adminRouter)
 
+const userRouter = require('./routes/user')
+app.use('/use',userRouter)
   
   const port = 3005
   app.listen(

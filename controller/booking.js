@@ -3,31 +3,31 @@ const bookingModel = require('../models/booking')
 // console.log(bookingModel,"BOOKING---CONTROLLER");
 
 
-const path = require('path')
-// console.log(bookingModel,"BOOKING---CONTROLLER");
-const multer = require('multer');
-const { request } = require('https');
-const fs = require('fs');
+// const path = require('path')
+// // console.log(bookingModel,"BOOKING---CONTROLLER");
+// const multer = require('multer');
+// const { request } = require('https');
+// const fs = require('fs');
 
 
-const BASE_DIR = path.join(process.cwd());
-const UPLOADS_DIR = path.join(BASE_DIR, 'uploads/booking');
-const storage = multer.diskStorage({
-    destination:function(req,file,callback){
-        if(!fs.existsSync(UPLOADS_DIR)){
-            fs.mkdirSync(UPLOADS_DIR);
-        }
-        callback(null,UPLOADS_DIR)
-    } ,
-    filename:function (req,file,callback){
+// const BASE_DIR = path.join(process.cwd());
+// const UPLOADS_DIR = path.join(BASE_DIR, 'uploads/booking');
+// const storage = multer.diskStorage({
+//     destination:function(req,file,callback){
+//         if(!fs.existsSync(UPLOADS_DIR)){
+//             fs.mkdirSync(UPLOADS_DIR);
+//         }
+//         callback(null,UPLOADS_DIR)
+//     } ,
+//     filename:function (req,file,callback){
         
-        callback(null,file.fieldname +'_' + Date.now() + path.extname(file.originalname))
-    }
-}
-)
+//         callback(null,file.fieldname +'_' + Date.now() + path.extname(file.originalname))
+//     }
+// }
+// )
 
-const upload = multer({storage:storage})
-const uploadFile = upload.single('file');
+// const upload = multer({storage:storage})
+// const uploadFile = upload.single('file');
 
 
 async function booking(req,res){
@@ -43,8 +43,8 @@ async function booking(req,res){
         const time = req.body.time
         const physician = req.body.physician
         // const idProof = req.body.idProof
-        const idProof = req.file.path
-        path = path.replace("/", "//")
+        const idProof = req.file
+        // path = path.replace("/", "//")
         bookingModel.booking(name,date,time,physician,idProof)
         
  
@@ -57,8 +57,7 @@ async function booking(req,res){
 }
 
 module.exports = {
-    booking,
-    uploadFile
+    booking
     
 }
 

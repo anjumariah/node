@@ -1,9 +1,9 @@
 const  express = require("express");
-const {adminPanel} = require('../controller/user')
+const {userPanel} = require('../controller/user')
 const router = express.Router()
 
 
 
-router.get('/user',adminPanel);
+router.get('/user',userPanel);
 
 module.exports=router

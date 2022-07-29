@@ -20,6 +20,7 @@ try {
 async function login(email,password){       
   // console.log(email,password,"login in model"); 
     const db = makeDbconfig.makeDb();
+  
     try{
       const logVerify= await db.query("SELECT * FROM signup WHERE email= ? AND password = ?",[email,password])
       // console.log(logVerify,"*************from db############");
