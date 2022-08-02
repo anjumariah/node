@@ -10,9 +10,9 @@ async function userPanel(req,res){
        const userResponse=await userModel.userPanel(id);
         console.log(userResponse,"iiiiiiiiiiiiiiiiiiiiiiiiiiiisssssdddddddddd");
         if(userResponse ==false){
-            return res.json({ success:false , message: 'error'})
+            return res.json({ success:false , message: 'user is not feteched from db'}).status(400);
         }
-        return res.json({ success: true , message: 'user id ',userResponse:userResponse})
+        return res.json({ success: true , message: 'user id ',userResponse:userResponse}).status(200);
     }catch{
 
         res.send({success:false,error:"no iser"})

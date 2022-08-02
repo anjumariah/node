@@ -9,7 +9,7 @@ async function about(req,res){
         if(aboutCont.length>0){
             return res.json({success:true, aboutCont:aboutCont}).status(200);
         }else{
-            res.status(400).send({success:false,error:"token verification failed failed"})
+            res.status(400).send({success:false,error:"NOt feteched from db"})
         }
         
     }catch{
@@ -21,6 +21,9 @@ async function ourSpec(req,res){
     try{
         const specialityCont =await labelModel.ourSpec(ourSpec);
         // console.log(specialityCont,"-----speciliality content form label model------");
+        if(specialityCont ==false){
+            return res.json({ success:false , message: 'speciality not feteched from db'}).status(400);
+        }
         return res.json({ success: true ,specCont:specialityCont}).status(200);
     }catch{
         res.status(400).send({success:false,error:"token authentication failed"})

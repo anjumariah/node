@@ -9,7 +9,7 @@ async function adminPanel(){
             const sqlAdmin= await db.query(sql)
             // console.log(sqlAdmin,"---ADMIN in MODEL------");
             return sqlAdmin;
-        }catch{
+        }catch(err){
             console.log(err);
             return false
         }finally{ 
@@ -17,6 +17,6 @@ async function adminPanel(){
           }
 }
 
-module.exports = {      
+module.exports = {       
     adminPanel
 }

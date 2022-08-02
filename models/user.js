@@ -9,7 +9,7 @@ async function userPanel(id){
             const sqlUser= await db.query("SELECT * FROM booking WHERE id = ?",[id])
             // console.log(sqlUser,"---user in MODEL------");
             return sqlUser;
-        }catch{
+        }catch(err){
             console.log(err);
             return false
         }finally{ 

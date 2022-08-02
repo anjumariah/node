@@ -8,8 +8,8 @@ async function card(req,res){
 
         if(cardControler){
             return res.json({success:true, cardControler:cardControler}).status(200);
-        }else{
-            res.status(400).send({success:false,error:"token verification failed failed"})
+        }if(cardControler===false){
+            res.status(400).send({success:false,error:"Not feteched from db"})
         }
         
     }catch{

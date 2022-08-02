@@ -8,7 +8,7 @@ async function card(){
         const sqlCard= await db.query(sql)
         // console.log(sqlCard,"---CARDS------");
         return sqlCard;
-    }catch{
+    }catch(err){
         console.log(err);
         return false
     }finally{ 

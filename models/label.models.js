@@ -24,7 +24,7 @@ async function ourSpec(){
         // console.log(sqlSpec,"---In About------");
         return sqlSpec;
        
-    }catch{
+    }catch(err){
         console.log(err);
         return false
     }finally{ 

@@ -13,6 +13,9 @@ async function signup(req,res){
     const email = req.body.email;
     const password = req.body.password; 
     authModel.signup(name,email,password);
+//     if(name===name && email=== email && password===password){
+//       return res.json({ success:false , message: 'user already exist please use another name email and password'})
+//   }
     return res.status(200).json({"sucess": true, message: 'hi'})
    }catch(err){
       return res.json({message:"error"}).status(500);
